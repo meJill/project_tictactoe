@@ -178,7 +178,7 @@ int getPlayerNumber(int player)
 }
 
 void getSign(int player)
-{
+{	
 	sign = 'X';
 	if(player == 1)
 	{
@@ -247,6 +247,38 @@ int showPlayerOptionsAndGetChoice(int player)
 	printf("7. Delete Ability \n");
 	printf("8. Counter \n");
 	printf("9. Normal Turn \n");
+
+	do
+	{
+		scanf("%d", &choice);
+		isValid = isValidChoice(player, choice);
+
+		if (!isValid)
+		{
+			printf("Player %d, you have made an invalid choise. \n", player);
+			printf("Player %d, enter your move : \n", player);
+		}
+	}
+	while (!isValid);
+
+	return choice;
+}
+
+int showPlayerOptionsAndGetChoiceHidden(int player)
+{
+	char choice;
+	int isValid;
+
+	printf("Player %d, enter your move : (e.g. 1 or 2)\n", player);
+	printf("1. Ability 1 \n");
+	printf("2. Ability 2 \n");
+	printf("3. Ability 3 \n");
+	printf("4. Ability 4 \n");
+	printf("5. Ability 5 \n");
+	printf("6. Ability 6 \n");
+	printf("7. Ability 7 \n");
+	printf("8. Ability 8 \n");
+	printf("9. Ability 9 \n");
 
 	do
 	{
@@ -527,146 +559,168 @@ void blankFourCornersAndCenter()
 
 void freeRow()
 {
-	char freeup;
+	char freeup1, freeup2;
 
-	printf("What row would you like to free up \n");
-	freeup = getch();
-
-	if (freeup == 'a' || freeup == 'b' || freeup == 'c' || freeup == 'd' ||freeup == 'e' )
+	printf("Enter 2 of your occupied spaces in the same row \n");
+	freeup1 = getche();
+	printf("\n");
+	freeup2 = getche();
+	printf("\n");
+	
+	if ((freeup1 == 'a' && a == sign) || (freeup1 == 'b' && b == sign) || (freeup1 == 'c' && c == sign) || (freeup1 == 'd' && d == sign) || (freeup1 == 'e' && e == sign)) 
 	{
-		if(a != sign)
+		if(freeup2 == 'a' && a == sign || freeup2 == 'b' && b == sign || freeup2 == 'c' && c == sign || freeup2 == 'd' && d == sign ||freeup2 == 'e' && e == sign)
 		{
-			a = 'a';
-		}
-
-		if(b != sign)
-		{
-			b = 'b';
-		}
-
-		if(c != sign)
-		{
-			c = 'c';
-		}
-
-		if(d != sign)
-		{
-			d = 'd';
-		}
-
-		if(e != sign)
-		{
-			e = 'e';
+			if(a != sign)
+			{
+				a = 'a';
+			}
+	
+			if(b != sign)
+			{
+				b = 'b';
+			}
+	
+			if(c != sign)
+			{
+				c = 'c';
+			}
+	
+			if(d != sign)
+			{
+				d = 'd';
+			}
+	
+			if(e != sign)
+			{
+				e = 'e';
+			}
 		}
 	}
-	else if (freeup == 'f' || freeup == 'g' || freeup == 'h' || freeup == 'i' ||freeup == 'j' )
+	else if (freeup1 == 'f' || freeup1 == 'g' || freeup1 == 'h' || freeup1 == 'i' ||freeup1 == 'j' )
 	{
-		if(f != sign)
+		if (freeup2 == 'f' || freeup2 == 'g' || freeup2 == 'h' || freeup2 == 'i' ||freeup2 == 'j' )
 		{
-			f = 'f';
+			if(f != sign)
+			{
+				f = 'f';
+			}
+	
+			if(g != sign)
+			{
+				g = 'g';
+			}
+	
+			if(h != sign)
+			{
+				h = 'h';
+			}
+	
+			if(i != sign)
+			{
+				i = 'i';
+			}
+	
+			if(j != sign)
+			{
+				j = 'j';
+			}
 		}
 
-		if(g != sign)
+	}
+	else if (freeup1 == 'k' || freeup1 == 'l' || freeup1 == 'm' || freeup1 == 'n' ||freeup1 == 'o' )
+	{
+		if (freeup2 == 'k' || freeup2 == 'l' || freeup2 == 'm' || freeup2 == 'n' ||freeup2 == 'o' )
 		{
-			g = 'g';
-		}
-
-		if(h != sign)
-		{
-			h = 'h';
-		}
-
-		if(i != sign)
-		{
-			i = 'i';
-		}
-
-		if(j != sign)
-		{
-			j = 'j';
+			if(k != sign)
+			{
+				k = 'k';
+			}
+	
+			if(l != sign)
+			{
+				l = 'l';
+			}
+	
+			if(g != sign)
+			{
+				m = 'm';
+			}
+	
+			if(n != sign)
+			{
+				n = 'n';
+			}
+	
+			if( o != sign)
+			{
+				o = 'o';
+			}
 		}
 	}
-	else if (freeup == 'k' || freeup == 'l' || freeup == 'm' || freeup == 'n' ||freeup == 'o' )
+	else if (freeup1 == 'p' || freeup1 == 'q' || freeup1 == 'r' ||freeup1 == 's' || freeup1 == 't')
 	{
-		if(k != sign)
+		if (freeup2 == 'p' || freeup2 == 'q' || freeup2 == 'r' ||freeup2 == 's' || freeup2 == 't')
 		{
-			k = 'k';
-		}
-
-		if(l != sign)
-		{
-			l = 'l';
-		}
-
-		if(g != sign)
-		{
-			m = 'm';
-		}
-
-		if(n != sign)
-		{
-			n = 'n';
-		}
-
-		if( o != sign)
-		{
-			o = 'o';
+			if(p != sign)
+			{
+				p = 'p';
+			}
+	
+			if(q != sign)
+			{
+				q = 'q';
+			}
+	
+			if(r != sign)
+			{
+				r = 'r';
+			}
+	
+			if(s != sign)
+			{
+				s = 's';
+			}
+	
+			if(t != sign)
+			{
+				t = 't';
+			}
 		}
 	}
-	else if (freeup == 'p' || freeup == 'q' || freeup == 'r' ||freeup == 's' || freeup == 't')
+	else if (freeup1 == 'u' || freeup1 == 'v' || freeup1 == 'w' || freeup1 == 'x' ||freeup1 == 'y' )
 	{
-
-		if(p != sign)
+		if (freeup2 == 'u' || freeup2 == 'v' || freeup2 == 'w' || freeup2 == 'x' ||freeup2 == 'y' )
 		{
-			p = 'p';
-		}
-
-		if(q != sign)
-		{
-			q = 'q';
-		}
-
-		if(r != sign)
-		{
-			r = 'r';
-		}
-
-		if(s != sign)
-		{
-			s = 's';
-		}
-
-		if(t != sign)
-		{
-			t = 't';
+			if(u != sign)
+			{
+				u = 'u';
+			}
+	
+			if(v != sign)
+			{
+				v = 'v';
+			}
+	
+			if(w != sign)
+			{
+				w = 'w';
+			}
+	
+			if(x != sign)
+			{
+				x = 'x';
+			}
+	
+			if(y != sign)
+			{
+				y = 'y';
+			}
 		}
 	}
-	else if (freeup == 'u' || freeup == 'v' || freeup == 'w' || freeup == 'x' ||freeup == 'y' )
+	else
 	{
-		if(u != sign)
-		{
-			u = 'u';
-		}
-
-		if(v != sign)
-		{
-			v = 'v';
-		}
-
-		if(w != sign)
-		{
-			w = 'w';
-		}
-
-		if(x != sign)
-		{
-			x = 'x';
-		}
-
-		if(y != sign)
-		{
-			y = 'y';
-		}
+		printf("Input error, should be in the same row \n");
 	}
 }
 
@@ -676,7 +730,9 @@ void letOpponentChoose(int player)
 	{
 		player = 2;
 		getNormalMove(player);
+		drawBoard();
 		getNormalMove(player);
+		drawBoard();		
 		getNormalMove(player);
 
 	}
@@ -684,11 +740,14 @@ void letOpponentChoose(int player)
 	{
 		player = 1;
 		getNormalMove(player);
+		drawBoard();
 		getNormalMove(player);
+		drawBoard();
 		getNormalMove(player);
 	}
 
 }
+
 int checkForO(int nOCount)
 {
 	if(a == 'O')
@@ -856,6 +915,8 @@ void evenItOut(int player)
 
 	nOCount = checkForO(nOCount);
 	nXCount = checkForX(nXCount);
+
+
 
 	if(player == 1)
 	{
@@ -1237,16 +1298,63 @@ void deleteAbility(int player)
 
 }
 
-void counter(int player)
+
+int counter(int player, char choice)
 {
-	// add logic here
+	char cChoice;
+	
+	if(player == 1)
+	{
+		player = 2; 
+		printf("Player %d do you want to counter the move? (y/n)\n", player);
+		cChoice = getchar();
+		
+		if(cChoice == 'y' || cChoice == 'Y')
+		{
+			player1Abilities[choice] = 0;
+			return 1;
+		}
+		else 
+		{
+			return 0;
+		}
+	}
+	else
+	{
+		player = 1;
+		printf("Player %d do you want to counter the move? (y/n) \n", player);
+		cChoice = getchar();
+		
+		if(cChoice == 'y' || cChoice == 'Y')
+		{
+			player2Abilities[choice] = 0;
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
 }
+
+
 
 void processChoice(int player, char choice)
 {
+	int checkCounter;
 	if(choice == 1)
 	{
-		take2Turns(player);
+		checkCounter = counter(player, choice);
+		
+		if(checkCounter == 0)
+		{
+			take2Turns(player);
+		}
+		else if(checkCounter == 1)
+		{
+			printf("You have been countered \n");
+			getNormalMove(player);
+		}
 	}
 	else if(choice == 2)
 	{
@@ -1274,7 +1382,7 @@ void processChoice(int player, char choice)
 	}
 	else if(choice == 8)
 	{
-		counter(player);
+
 	}
 	else if(choice == 9)
 	{
@@ -1353,19 +1461,42 @@ int checkWin()
 
 }
 
+int checkAbility()
+{
+	int checkIfHide;
+	
+	printf("Would you like to hide the abilities? (y/n)\n");
+	scanf("%c", &checkIfHide);
+	
+	return checkIfHide;
+}
+
 int main()
 {
+
 	int gameResult;
-	char choice;
+	char choice, checkIfHide;
 	
+	checkIfHide = checkAbility();
+
+
 	do
 	{
 		drawBoard();
 
 		player = getPlayerNumber(player);
 		getSign(player);
-		choice = showPlayerOptionsAndGetChoice(player);
+		
+		if(checkIfHide == 'y'|| checkIfHide == 'Y')
+		{
+			choice = showPlayerOptionsAndGetChoiceHidden(player);	
+		}
+		else
+		{
+			choice = showPlayerOptionsAndGetChoice(player);
+		}
 		processChoice(player, choice);
+		
 		gameResult = checkWin();
 
 
